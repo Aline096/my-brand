@@ -352,6 +352,16 @@ td,th {
 /* end recent blog */
 
 /* start of add blogs */
+
+.title_error, .description_error{
+	
+	display:flex;
+	color: #c62828;
+	margin-top: 5px;
+	margin-bottom: 20px;
+	/* display: none; */
+}
+
 .blog-title{
     width: 500px;
     height: 2rem;

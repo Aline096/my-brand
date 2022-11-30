@@ -254,18 +254,21 @@
           <div class="contact-info"><h1>Get In Touch With Me</h1>  
           
             <div class="contact-form">
-              <form action="https://formspree.io/f/xyylngw" method="POST">
+              <form id="contact-form" action="#" method="POST">
                 <div class="form-control">
-                  <label for="name">Name</label>
-                  <input type="text" id="name" name="sender-name" placeholder="Enter Your Name" class="input-field" required/>
+                  <label for="name">Full Name</label>
+                  <input type="text" id="name" name="sender-name" placeholder="Enter Your Full Name" class="input-field " />
+                  <div class="name_error"> </div>
                 </div>
                 <div class="form-control">
                   <label for="email">Email</label>
-                  <input type="email" id="email" name="sender-email" placeholder="Enter Your Email" class="input-field" required/>
+                  <input type="email" id="email" name="sender-email" placeholder="Enter Your Email" class="input-field "/>
+                  <div class="email_error"> </div>
                 </div>
                 <div class="form-control">
                   <label for="message">Message</label>
-                  <textarea id="message" cols="70" rows="10" placeholder="Enter Your Message" name="message" class="input-field" required></textarea>
+                  <textarea id="message" cols="70" rows="10" placeholder="Enter Your Message" name="message" class="input-field"></textarea>
+                  <div class="message_error"> </div>
                 </div>
                 <div class="submit-button"><input type="submit" value="Submit" id="submit-btn" class="submit-btn"/></div>
               </form>
@@ -309,5 +312,5 @@
 </body>
 <!-- Swiper JS -->
 <script src="./js/swiper-bundle.min.js"></script>
-<script src="./js/script.js"></script>
+<script src="./js/contact-validation.js"></script>
 </html>

@@ -595,6 +595,23 @@ textarea{
 	margin: 10px;
 }
 
+input.invalid{
+	border: 1px solid red;
+}
+error-hint{
+	color: red;
+}
+.hidden{
+	display: none;
+}
+.email_error, .name_error, .message_error{
+	justify-content: center;
+	display:flex;
+	color: #c62828;
+	margin-top: 5px;
+	margin-bottom: 20px;
+}
+
 /*End contact Section */
 
 /* Footer */
