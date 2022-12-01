@@ -72,8 +72,10 @@ button:hover{
 	background: #2B2929;
 }
 .email_error, .password_error{
-	justify-content: center;
+	/* justify-content: center; */
 	display:flex;
+	width: 200px;
+	margin-left: 100px;
 	color: #c62828;
 	margin-top: 5px;
 	margin-bottom: 20px;

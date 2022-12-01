@@ -1,7 +1,6 @@
 var emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 var textRegex= /^[a-zA-Z]+ [a-zA-Z]+$/;
 var required=20;
-// var left= message.length-required;
 document.querySelector('#contact-form').addEventListener('submit', (event) => {
     event.preventDefault()
     const name = event.target.elements['sender-name'].value;

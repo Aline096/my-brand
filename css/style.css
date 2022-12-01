@@ -605,7 +605,9 @@ error-hint{
 	display: none;
 }
 .email_error, .name_error, .message_error{
-	justify-content: center;
+	display: flex;
+	margin-left: 222px;
+	/* justify-content: center; */
 	display:flex;
 	color: #c62828;
 	margin-top: 5px;
