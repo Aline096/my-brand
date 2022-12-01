@@ -374,8 +374,8 @@ td,th {
 
 .file_input_div {
     position: relative;
-    width:80px; 
-    height:26px; 
+    width:auto; 
+    height:100px; 
     overflow: hidden; }
 
 .file_input_button {
@@ -503,3 +503,38 @@ td,th {
         padding: 10px;
     }
 }
+
+.custom-file-input::-webkit-file-upload-button {
+    visibility: hidden;
+    margin:10px 0px;
+  }
+  .custom-file-input::before {
+    content: 'Select Picture';
+    display: inline-block;
+    background: black;
+    border: 1px solid black;
+    outline: none;
+    white-space: nowrap;
+    -webkit-user-select: none;
+    cursor: pointer;
+    padding: 8px;
+    color: white;
+    margin:5px 0px 20px 0px;
+    font-weight: 400;
+    font-size: inherit;
+  }
+  .custom-file-input:hover::before {
+    border-color: black;
+  }
+  .custom-file-input:active::before {
+    background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+  }
+  
+  input[type="file" i]{
+    width: 96%;
+    color: darkgray;
+  }
+
+  .hidden{
+    display: none;
+  }

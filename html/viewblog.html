@@ -3,6 +3,7 @@
     <title></title>
     <link rel="stylesheet" href="./../css/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/f6dcf461c1.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
@@ -21,11 +22,6 @@
           </div>
           <ul>
             <li><a href="./../index.html" data-after="Home">Home</a></li>
-            <!-- <li><a href="#services" data-after="Service">Skills</a></li>
-            <li><a href="#projects" data-after="Projects">Projects</a></li>
-            <li><a href="#blogs" data-after="blogs">Blogs</a></li>
-            <li><a href="#about" data-after="About">About</a></li>
-            <li><a href="#contact" data-after="Contact">Contact</a></li> -->
             <li><a href="./signup.html" data-after="SignUp">Signin</a></li>
           </ul>
         </div>
@@ -37,68 +33,50 @@
     
   <!-- Blog -->
   
-  <div class="blog containerc">
+  <div class="blog">
             <h1 class="heading">BLOG</h1>
-            <div class="box-container containerc view">
-              <div class="box shadow">
-                  <div class="image">
-                      <img src="./../img/blog/blog_3.jpg" alt="">
-                      <h3><i class="fas fa-heart"></i> 82</h3>
-                  </div>
-              </div>
-                <div class="content">
-                    <h3>Why Lead Generation is Key for Business Growth</h3>
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eaque, odit!
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eaque, odit!
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eaque, odit!
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eaque, odit!
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eaque, odit!
-                    </p>
+            <div class=" view">
+                <div class="box-container shadow">
+                    
+                </div>
+              
+                <div class="likes-and-comment-count">
+
+                  <button  id="like-btn" class="btns"><i class="far fa-heart" ></i> </button><small class="count btns" id="likes"> </small> 
+                  <button  id="comment-btn" class="btns"><i class="far fa-comment" ></i> </button><small class="count btns" id="comments" > </small>                 
+                
                 </div>
                 
-                <div class="containerc">
-                  <div class=""><h3>COMMENTS</h3></div>
-                  <div class="comment-container opened" id="first-comment">
-                    <div class="comment-card">
-                      <h3 class="comment-title">The first comment</h3>
-                      <p>
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum
-                        eaque itaque sit tempora officiis, quisquam atque? Impedit
-                        dignissimos error laudantium!
-                      </p>
-                      <div class="comment-footer">
-                        <div>Likes 123</div>
-                        <div>Dislikes 23</div>
-                        <div class="show-replies">Reply 2</div>
+                <div class="">
+                    <form id="comment-form">
+                      <div class="form_info center_display">
+                          <input type="text" name="user" id="user" placeholder="Your user name">
                       </div>
-                    </div>
-                    <div class="comment-container" dataset="first-comment" id="first-reply">
-                      <div class="comment-card">
-                        <h3 class="comment-title">The first reply</h3>
-                        <p>
-                          Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                          Voluptatum eaque itaque sit tempora officiis, quisquam atque?
-                          Impedit dignissimos error laudantium!
-                        </p>
-                        <div class="comment-footer">
-                          <div>Likes 123</div>
-                          <div>Dislikes 23</div>
-                          <div class="show-replies">Reply 1</div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                      <div class="name_error"></div>
+                      <div class="form_info center_display">
+                         <input type="text" name="comment" id="comment" placeholder="Add a short comment here">
+                      </div>    
+                      <div class="comment_error"></div>
+                      
+                      <button type="submit" class="c-btn">Submit</button>
+                    </form>
                 </div>
-                  <label for="comment">Add your comment</label>
-                  <textarea name="comment" id="comment" cols=60" rows="10"></textarea>
+                <h2>Comments</h2>
+                <hr>
+                <div class="comments">
+                </div>
 
-                  <a href="#" class="btn ">Submit</a>
-          </div>
+             </div>
 
-  </div>
+             <div class="comments-container center_display">
+                  
+             </div>
         <!-- <a href="blog.html" class="btn back">Back</a> -->
+        <script src="./../js/singleblog.js" defer></script>
       
+   <script src="./../js/app.js"></script>   
 <script src="./../js/index.js"></script>
+<script src="./../js/comment-validation.js"></script>
   <!-- End of blog  -->
   
 </body>

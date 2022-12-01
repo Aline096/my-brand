@@ -1,0 +1,170 @@
+// CKEDITOR.replace("editor1");
+
+// var textRegex= /^[a-zA-Z]+ [a-zA-Z]+$/;
+// var required=100;
+const articleId = location.hash.slice(1)
+const accessToken = localStorage.getItem('mora')
+const isLoggedIn = localStorage.getItem('isLoggedIn')
+if(!isLoggedIn && !accessToken){
+    window.location.assign('/html/signup.html')
+}
+
+let imageUrl = ''
+
+document.querySelector('#picture').addEventListener('change', function () {
+    const reader = new FileReader()
+    reader.readAsDataURL(this.files[0])
+    reader.addEventListener('load', () => {
+      imageUrl = reader.result
+    })
+})
+
+fetch('https://mybrand-api-uwera.herokuapp.com/api/articles')
+        .then((res) => res.json())
+        .then((data) => {
+             const articles =data.data
+             if (data.status === 200) {
+                console.log(articles);
+                if(articleId.length !== 0){
+                const foundArticle = articles.filter((article) => {
+                    return article._id === articleId
+                    
+                })
+                console.log(foundArticle);
+                data = foundArticle.length !== 0 ? foundArticle[0] : undefined
+                
+                document.querySelector('.blog-title').value = data.title;
+                document.querySelector('#description').value = data.description;
+                imageUrl = data.picture
+    }
+            } else {
+                throw new Error(data.message)
+            }
+    })
+    .catch(error => console.error(error));
+
+articleId.length !== 0 ? document.querySelector('.add').textContent = 'Edit Blog' : document.querySelector('.add').textContent = 'Create Blog'
+
+const formData = new FormData()
+const title = document.querySelector('.blog-title').value
+const description = document.querySelector('#description').value
+const picture = document.querySelector('#picture')
+
+
+document.querySelector('#add-blog').addEventListener('submit', (e) => {
+    e.preventDefault()
+
+    formData.append("title", title );
+    formData.append("description", description);
+    formData.append("picture", picture.files[0] );
+
+    //Validation
+    // const title = e.target.elements['title'].value;
+    // const description = e.target.elements['description'].value;
+    //     if (title.match(textRegex)) {
+    //     document.querySelector(".title_error").textContent = ""
+    //     console.log(title)
+        
+    // } else if(title.length == 0){
+    //     document.querySelector(".title_error").textContent = "Enter The title"
+    // }else{
+    //     document.querySelector(".title_error").textContent = "Title is Invalid"
+    // }
+
+    //     if (description.length-required>0) {
+    //     document.querySelector(".description_error").textContent = ""
+    //     console.log(description)
+        
+    // } else if(description.length==0){
+    //     document.querySelector(".description_error").textContent = "Enter your description, Minimum 100 characters "
+    // } else {
+    //     document.querySelector(".description_error").textContent = " description is Invalid, Minimum 100 characters";
+    // }
+    //Add blog to dashboard
+
+    // const date = Date.parse(new Date());
+    // console.log(date)
+    let data
+    const isInEditMode = articleId.length !== 0
+    const newData = {
+        
+        title: e.target.elements['title'].value,
+        description: e.target.elements['description'].value,
+        picture: imageUrl,
+       
+    }
+
+    const newArticle = {
+        title: e.target.elements['title'].value,
+        description: e.target.elements['description'].value,
+        picture: imageUrl,
+    }
+    if (isInEditMode) {
+
+        
+        const url=`https://mybrand-api-uwera.herokuapp.com/api/articles/${articleId}`
+
+        fetch(url, {
+            method: 'PATCH',
+            headers: {
+                Accept: 'application.json',
+                'Content-Type': 'application/json',    
+                'Authorization': `Bearer ${JSON.parse(localStorage.getItem('mora'))}`,
+            },
+            
+            body: JSON.stringify(newData)
+        })
+        .then((response) => response.json())
+        .then((data) => {
+            console.log(data.status);
+            if(data.status === 200) {
+                location.reload()
+                alert('Blog Sent Successfully')
+                location.assign(`/html/viewblog.html?id=${newData.id}`)
+            } else {
+                throw new Error(data.message)
+            }
+        })
+        .catch(error => console.error(error));
+
+        
+    } else {
+        const url= 'https://mybrand-api-uwera.herokuapp.com/api/articles'
+
+        fetch(url, {
+            method: 'POST',
+            mode: 'cors', 
+            headers: {
+                Accept: 'application.json',
+                'Content-Type': 'application/json',    
+                'Authorization': `Bearer ${JSON.parse(localStorage.getItem('mora'))}`,
+                
+            },
+            body: JSON.stringify(newArticle)
+        })
+        .then((response) => response.json())
+        .then((data) => {
+            console.log(data.status);
+            if(data.status === 200) {
+                // location.reload()
+                alert('Blog Sent Successfully')
+                location.assign(`/html/viewblog.html?id=${newArticle._id}`)
+            } else {
+                throw new Error(data.message)
+            }
+        })
+        .catch(error => console.error(error));
+
+
+
+
+        // const existingArticle = JSON.parse(localStorage.getItem('articles'))
+        // existingArticle.push(newData)
+        // localStorage.setItem('articles', JSON.stringify(existingArticle))
+        
+    }
+    e.target.elements['title'].value = ""
+    e.target.elements['description'].value = ""
+    e.target.elements['picture'].value = ""
+})
+
