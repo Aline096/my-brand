@@ -4,8 +4,9 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./../css/styles.css">
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
     <title>Dashboard</title>
+    <script src="https://cdn.ckeditor.com/4.20.1/standard/ckeditor.js"></script>
+    
 </head>
 
 <body>
@@ -72,27 +73,31 @@
                     <h2 class="section--title">Add Blogs</h2>
                 </div>
                 <div class="table">
-                    <label for="title" class="">Title</label><br>
-                    <input class="blog-title" type="text" name="title" placeholder="Enter the title"><br>
+                    <form id="add-blog" action="#" method="post" class="table">
+                        <label for="title" class="">Title</label><br>
+                        <input class="blog-title" type="text" name="title" placeholder="Enter the title" ><br>
+                        <div class="title_error"></div>
 
-                    <label for="description">Description</label><br>
-                    <textarea name="description" id="description" cols="60" rows="20"></textarea><br>
-                    
-                    <input type="text" class="file_input_textbox" readonly="readonly" value='No File Selected'>
+                        <label for="description">Description</label><br>
+                        <div id="froala"></div>
+                        <textarea name="editor1" id="description" cols="60" rows="20" required></textarea><br>
+                        <div class="description_error"></div>
                         <div class="file_input_div">
-                            <input type="button" value="Browse" class="file_input_button" />
-                            <input type="file" name="uploaded_file" class="file_input_hidden"/>
+                            <input type="file" name="picture" id="picture" class="custom-file-input" >
                         </div>
-                        <button class="add"></i>Add Blog</button>    
-                
+                        <button type="submit" class="add"></i></button>    
+                    </form>
                 </div>
             </div>
 
             <!-- End Blog  -->
+            <dialog>
 
+
+            </dialog>
         </div>
     </section>
-    <script src="./../js/main.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/uuid/8.3.2/uuid.min.js" referrerpolicy="no-referrer"></script>
+<script src="./../js/add-blog.js"></script>
 </body>
-
 </html>
