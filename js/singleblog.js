@@ -52,22 +52,22 @@ let newFeedback={
     
     let c =article[b].comments.push(newFeedback)
     localStorage.setItem('articles', JSON.stringify(c))
-    // const user= username.value
-    // const feedback= comment.value
-    // if( user&&feedback){
-    //      let newFeedback={
-    //         "id":Math.floor((Math.random()*1000)+1),
-    //         "username": user,
-    //         "userComment": feedback,
-    //      }
+    const user= username.value
+    const feedback= comment.value
+    if( user&&feedback){
+         let newFeedback={
+            "id":Math.floor((Math.random()*1000)+1),
+            "username": user,
+            "userComment": feedback,
+         }
 
-    //     const existingComments = JSON.parse(localStorage.getItem('comments'))
-    //     existingComments.push(newFeedback)
-    //     localStorage.setItem('comments', JSON.stringify(existingComments))
+        const existingComments = JSON.parse(localStorage.getItem('comments'))
+        existingComments.push(newFeedback)
+        localStorage.setItem('comments', JSON.stringify(existingComments))
 
-    //     addFeedback(newFeedback)
+        addFeedback(newFeedback)
         
-    // }
+    }
 e.preventDefault 
 }
 
