@@ -24,6 +24,11 @@ for(let i=0;i<article.length;i++){
     const span=document.createElement("span")
     const editicon=document.createElement('i')
     editicon.setAttribute('class','ri-edit-line edit')
+    editicon.setAttribute('id', article[i].id)
+    editicon.addEventListener('click', (e) => {
+        console.log(e.target.id)
+        location.assign(`/html/addblog.html#${e.target.id}`)
+    })
     let deleteicon=document.createElement('i')
     deleteicon.setAttribute('class','ri-delete-bin-line delete')
     span.appendChild(editicon)
@@ -46,9 +51,7 @@ for(let i=0;i<article.length;i++){
 
     localStorage.setItem('articles', JSON.stringify(filteredBlogs))
     location.reload()
-
-    
-
 })
 }
+
 

@@ -841,6 +841,9 @@ error-hint{
 .comment-container{
 	position: relative;
 }
+ #like-btn .btns{
+	color: #D98F89;
+}
 .comment-container::before{
 	content: "";
 	background-color: #D98F89;
@@ -848,7 +851,7 @@ error-hint{
 	min-height: 100%;
 	width: 1px;
 	left: -10px;
-} */
+} 
 .comment-container::not(:first-child){
 	margin-left: 2rem;
 	margin-top: 1rem;
@@ -856,12 +859,31 @@ error-hint{
  .comment-card{
 	padding: 20px;
 	background-color: #fff;
+	display: grid;
+	grid-template-columns: 10% 70% 20%;
 	border: 1px solid rgba(0,0,0,0.3);
 	border-radius: .5rem;
 	min-width: 100%;
 	box-shadow: 0 0 50px rgba(0,0,0,0.1);
 }
-.comment-card h3, .comment-card p{
+.comment-card .pic{
+	background-color: #d98f98;
+	border-radius: 50%;
+	margin:10%;
+	font-size: 25px;
+	color: white;
+	text-transform: uppercase;
+}
+.comment-info{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+.comment-info .user{
+	color: #aaa;
+	font-size:small;
+}
+.comment-card small, .comment-card p{
 margin-bottom: 1rem;
 }
 
@@ -873,11 +895,26 @@ margin-bottom: 1rem;
 	justify-content: flex-end;
 	align-items: center;
 }
-
-.show-replies{
-	cursor: pointer;
-
+.comment-footer .heart-icon-comment{
+	font-size: 20px;
+	
+	color: #eee;
 }
+
+/* with js */
+.heart-icon-comment .fas-positive {
+	color: red;
+}
+.comment-footer button{
+	border: none;
+	background: transparent;
+	color: #aaa;
+	text-transform: uppercase;
+	cursor: pointer;
+}
+
+
+
 /* End of comments */
 
 /* Admin Panel */

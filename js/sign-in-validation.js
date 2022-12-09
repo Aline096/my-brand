@@ -15,7 +15,7 @@ document.querySelector('#form_login').addEventListener('submit', (e) => {
         if (adminCredential.email === email && adminCredential.password === password) {
             console.log('success');
             localStorage.setItem("isLoggedIn", JSON.stringify(true))
-            location.assign('/html/dashboard.html')
+            window.location.assign('/html/dashboard.html')
         } else {
 
             formError.textContent = "Invalid Credential"

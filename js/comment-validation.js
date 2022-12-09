@@ -14,7 +14,15 @@ document.querySelector('#comment-form').addEventListener('submit', (event) => {
         validate();
     })
     validate();
-    
+    let user= document.getElementById('user').value;
+    let comment= document.getElementById('comment').value;
+    if(user.match(nameRegex)&& comment.length-required>0 ){
+        
+        user1.value= "";
+        comment1.value ="";
+        
+    }
+
 })
 
 function validate(){

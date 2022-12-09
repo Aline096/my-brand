@@ -1,15 +1,6 @@
-{/* <div class="box shadow">
-    <div class="image">
-        <img src="./../img/blog/blog_3.jpg" alt="">
-        <h3><i class="fas fa-heart"></i> 82</h3>
-    </div>
-    <div class="content">
-        <h3>Why Lead Generation is Key for Business Growth</h3>
-        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eaque, odit!</p>
-        <a href="./viewblog.html" class="btn">read more</a>
-    </div>
 
-</div> */}
+// render blogs
+
 const articles = JSON.parse(localStorage.getItem('articles')) ? JSON.parse(localStorage.getItem('articles')) : []
 
 const renderArticles = (articles) => {
