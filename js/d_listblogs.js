@@ -49,13 +49,23 @@ fetch('https://mybrand-api-uwera.herokuapp.com/api/articles')
             
 
             deleteicon.addEventListener('click', ()=>{
-            let dltid= deleteicon.closest('tr').firstElementChild.innerText
-            let filteredBlogs = result.filter(a =>{
-            return a._id !== dltid
+            fetch(`https://mybrand-api-uwera.herokuapp.com/api/articles/${result[i]._id}`, {
+                method: 'DELETE',
+                headers: {   
+                    'Authorization': `Bearer ${JSON.parse(localStorage.getItem('mora'))}`,
+                    'Content-Type': "application/json",
+                }, 
             })
+            .then((res) => res.json())
+            .then((data) => {
+                if (data.status === 200){
+                    location.reload()
+                } else{
+                    throw new Error(data.message)
+                }
+            })
+            .catch(error => console.error(error));
 
-            // localStorage.setItem('results', JSON.stringify(filteredBlogs))
-            location.reload()
         })
 }
 }

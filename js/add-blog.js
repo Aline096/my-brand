@@ -46,16 +46,16 @@ fetch('https://mybrand-api-uwera.herokuapp.com/api/articles')
 articleId.length !== 0 ? document.querySelector('.add').textContent = 'Edit Blog' : document.querySelector('.add').textContent = 'Create Blog'
 
 const formData = new FormData()
-const title = document.querySelector('.blog-title').value
-const description = document.querySelector('#description').value
+const title = document.querySelector('#kigali')
+const description = document.querySelector('.rwanda')
 const picture = document.querySelector('#picture')
 
 
 document.querySelector('#add-blog').addEventListener('submit', (e) => {
     e.preventDefault()
-
-    formData.append("title", title );
-    formData.append("description", description);
+    
+    formData.append("title", title.value );
+    formData.append("description", description.value);
     formData.append("picture", picture.files[0] );
 
     //Validation
@@ -86,41 +86,26 @@ document.querySelector('#add-blog').addEventListener('submit', (e) => {
     // console.log(date)
     let data
     const isInEditMode = articleId.length !== 0
-    const newData = {
-        
-        title: e.target.elements['title'].value,
-        description: e.target.elements['description'].value,
-        picture: imageUrl,
-       
-    }
-
-    const newArticle = {
-        title: e.target.elements['title'].value,
-        description: e.target.elements['description'].value,
-        picture: imageUrl,
-    }
+   
     if (isInEditMode) {
 
-        
         const url=`https://mybrand-api-uwera.herokuapp.com/api/articles/${articleId}`
 
         fetch(url, {
             method: 'PATCH',
-            headers: {
-                Accept: 'application.json',
-                'Content-Type': 'application/json',    
+            headers: {    
                 'Authorization': `Bearer ${JSON.parse(localStorage.getItem('mora'))}`,
             },
             
-            body: JSON.stringify(newData)
+            body: formData
         })
         .then((response) => response.json())
         .then((data) => {
             console.log(data.status);
             if(data.status === 200) {
                 location.reload()
-                alert('Blog Sent Successfully')
-                location.assign(`/html/viewblog.html?id=${newData.id}`)
+                alert('Blog updated Successfully')
+                location.assign(`/html/viewblog.html?id=${articleId}`)
             } else {
                 throw new Error(data.message)
             }
@@ -134,21 +119,19 @@ document.querySelector('#add-blog').addEventListener('submit', (e) => {
         fetch(url, {
             method: 'POST',
             mode: 'cors', 
-            headers: {
-                Accept: 'application.json',
-                'Content-Type': 'application/json',    
+            headers: {   
                 'Authorization': `Bearer ${JSON.parse(localStorage.getItem('mora'))}`,
                 
             },
-            body: JSON.stringify(newArticle)
+            body: formData
         })
         .then((response) => response.json())
         .then((data) => {
             console.log(data.status);
-            if(data.status === 200) {
+            if(data.status === 201) {
                 // location.reload()
-                alert('Blog Sent Successfully')
-                location.assign(`/html/viewblog.html?id=${newArticle._id}`)
+                alert('Blog Created Successfully')
+                location.assign(`/html/viewblog.html?id=${data.articleID}`)
             } else {
                 throw new Error(data.message)
             }
