@@ -24,23 +24,23 @@ const renderArticle = (article) => {
     document.querySelector('.comments').innerHTML = comments
 }
 
-fetch(apiUrl, {
-    method: 'GET',
-    headers: {
-        'Content-Type': 'application/json',
-    },
-})
-.then((response) => response.json())
-.then((data) => {
-    if(data.status === 200) {
-        renderArticle(data.payload)
-    } else {
-        throw new Error(data.message)
-    }
-})
-.catch((error) => {
-    console.error('Error:', error.message);
-});
+// fetch(apiUrl, {
+//     method: 'GET',
+//     headers: {
+//         'Content-Type': 'application/json',
+//     },
+// })
+// .then((response) => response.json())
+// .then((data) => {
+//     if(data.status === 200) {
+//         renderArticle(data.payload)
+//     } else {
+//         throw new Error(data.message)
+//     }
+// })
+// .catch((error) => {
+//     console.error('Error:', error.message);
+// });
 
 
 //like 

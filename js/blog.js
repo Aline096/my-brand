@@ -45,10 +45,10 @@ const renderArticles = (articles) => {
 }
 
 
-fetch('https://mybrand-api-uwera.herokuapp.com/api/articles')
-    .then((res) => res.json())
-    .then((data) => {
-      if (data.status === 200) {
-        renderArticles(data.data)
-      }
-    })
+// fetch('https://mybrand-api-uwera.herokuapp.com/api/articles')
+//     .then((res) => res.json())
+//     .then((data) => {
+//       if (data.status === 200) {
+//         renderArticles(data.data)
+//       }
+//     })

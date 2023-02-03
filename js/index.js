@@ -1,14 +1,11 @@
-const showContainers = document.querySelectorAll(".show-replies");
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
+import BlogsList from '../components/blogs';
 
-showContainers.forEach((btn) =>
-  btn.addEventListener("click", (e) => {
-    let parentContainer = e.target.closest(".comment__container");
-    let _id = parentContainer.id;
-    if (_id) {
-      let childrenContainer = parentContainer.querySelectorAll(
-        `[dataset=${_id}]`
-      );
-      childrenContainer.forEach((child) => child.classList.toggle("opened"));
-    }
-  })
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+    <BlogsList />
+  </React.StrictMode>
 );
